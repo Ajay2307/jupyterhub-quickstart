@@ -6,7 +6,8 @@ LABEL io.k8s.display-name="JupyterHub" \
       io.openshift.s2i.scripts-url="image:///opt/app-root/builder"
 
 USER root
-
+COPY templates/my-logo.png /usr/local/share/jupyter/hub/static/images/my-logo.png
+USER ${NB_USER}
 COPY . /tmp/src
 
 RUN rm -rf /tmp/src/.git* && \
